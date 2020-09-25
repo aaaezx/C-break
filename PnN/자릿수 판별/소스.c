@@ -1,15 +1,38 @@
 #include <stdio.h>
+#include <math.h>
 int main()
 {
-	int input, cnt=0;
-	printf("정수 하나를 입력하세요. : ");
+	int input;
+	int cnt = 0;
+
+	printf("수를 입력하세요. : ");
 	scanf_s("%d", &input);
-	while (input > 0)
+
+	int temp = input;
+
+	while (temp > 0)
 	{
-		input = input / 10;
+		temp = temp / 10;
 		cnt++;
 	}
-	printf("자릿수는 %d입니다.\n", cnt);
+	temp = input;
+	int re;
+	while (cnt != 0)
+	{
+		cnt--;
+		int pro = input / (int)pow(10, cnt) % 10;
+		int two = temp % 10;
+		temp = temp / 10;
+		if (pro == two)
+			re=1;
+		else
+			re=0;
+	}
+	if (re){
+		printf("Yes.\n");
+	}
+	else
+		printf("No.\n");
 
 
 	return 0;
